@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+</head>
+<body id="authenticate">
+    <div class="card">
+        <div class="logo" width="20px">
+            <img src="./img/spotify.png" alt="">
+            <span>Spotify</span>
+        </div>
+        <div class="options">
+            <button id="login-btn"><span id="login-span">SING IN</span></button>
+            <button id="register-btn"><span id="register-span" style="border-bottom: 2px solid transparent;">SING UP</span></button>
+        </div>
+        <form id="login" action="./php/login.php" method="post">
+            <input type="text" name="user" id="user" required placeholder="Username">
+            <input type="password" name="pwd" id="pwd" required placeholder="Password">
+            <!-- <div class="g-recaptcha" data-sitekey="6LcbDHYoAAAAAMH5F4iBEp7RnLLiX4FzC5gybEIs"></div> -->
+            <input type="submit" id="login" name="login" value="SING IN" class="btn">
+        </form>
+        <form id="register" action="./php/register.php" method="post" style="display: none;">
+            <input type="text" name="user" id="user" required placeholder="Username">
+            <input type="text" name="email" id="email" required placeholder="Email">
+            <input type="password" name="pwd" id="pwd" required placeholder="Password">
+            <input type="password" name="pwd-repeat" id="pwd-repeat" required placeholder="Repear password">
+            <!-- <div class="g-recaptcha" data-sitekey="6LcbDHYoAAAAAMH5F4iBEp7RnLLiX4FzC5gybEIs"></div> -->
+            <input type="submit" id="register" name="register" value="Register" class="btn">
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+
+    /* $(document).on('click', '#login', function(){
+        var response = grecaptcha.getResponse();
+        if(response.length == 0) {
+            alert('Please verify you are NOT a robot!');
+            return false;
+        }
+    }); */
+
+    const loginBtn = document.getElementById("login-btn");
+    const loginSpan = document.getElementById("login-span");
+    const registerBtn = document.getElementById("register-btn");
+    const registerSpan = document.getElementById("register-span");
+    const formLogin = document.getElementById("login");
+    const formRegister = document.getElementById("register");
+
+    loginBtn.addEventListener("click", function() {
+
+        registerSpan.style.borderBottom = "2px solid transparent";
+        loginSpan.style.borderBottom = "2px solid #2DB656";
+        formRegister.style.display = "none";
+        formLogin.style.display = "flex";
+
+    });
+
+    registerBtn.addEventListener("click", function() {
+
+        loginSpan.style.borderBottom = "2px solid transparent";
+        registerSpan.style.borderBottom = "2px solid #2DB656";
+        formLogin.style.display = "none";
+        formRegister.style.display = "flex";
+
+    });
+</script>
